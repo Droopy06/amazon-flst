@@ -27,6 +27,11 @@ public class MembreServiceImpl implements MembreService {
     }
 
     @Override
+    public Membre getMemberByName(String name, String password) {
+        return membreMapper.getMemberByName(name,password);
+    }
+
+    @Override
     public void saveMember(Membre membre) {
         membreMapper.saveMember(membre);
     }

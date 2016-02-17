@@ -35,6 +35,15 @@ public class MembreMapperImpl implements MembreMapper {
     }
 
     @Override
+    public Membre getMemberByName(String name, String password) {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        List<Membre> membres = session.createQuery("from Membre where name=" + name + "and password ="+password).list();
+        session.close();
+        return membres.get(0);
+    }
+
+    @Override
     public void saveMember(Membre membre) {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
