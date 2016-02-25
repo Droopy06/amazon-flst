@@ -14,4 +14,5 @@ public interface MembreService {
     Membre getMemberByName(String name,String password);
     void saveMember(Membre membre);
     void updateInformation(Membre membre);
+    String getTokenByUser();
 }

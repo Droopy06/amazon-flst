@@ -14,42 +14,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Membre")
 public class Membre {
-    @Id
-    @GeneratedValue
-    private
-    @Getter
-    @Setter
-    long id;
-    private
-    @Getter
-    @Setter
-    String nom;
-    private
-    @Getter
-    @Setter
-    String prenom;
-    private
-    @Getter
-    @Setter
-    String email;
-    private
-    @Getter
-    @Setter
-    String password;
-    private
-    @Getter
-    @Setter
-    String ip;
-    private
-    @Getter
-    @Setter
-    String adresse;
-    private
-    @Getter
-    @Setter
-    int age;
-    private
-    @Getter
-    @Setter
-    boolean isHaveCar;
+
+    @Id @GeneratedValue
+    private @Getter @Setter long id;
+    private @Getter @Setter String nom;
+    private @Getter @Setter String prenom;
+    private @Getter @Setter String adresse;
+    private @Getter @Setter String cp;
+    private @Getter @Setter String pays;
+    private @Getter @Setter String compte;
+    private @Getter @Setter String token;
+    private @Getter @Setter String password;
+    private @Getter @Setter int actif;
+    private @Getter @Setter int prenium;
 }
