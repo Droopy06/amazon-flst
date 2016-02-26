@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashMap;
 
 /**
  * Created by prog on 16/02/2016.
@@ -23,30 +25,61 @@ public class MembreController {
     @Autowired
     HttpSession httpSession;
 
+    @RequestMapping(value = {"/connexion"}, method = RequestMethod.GET)
+    public ModelAndView connexion(@ModelAttribute @Valid Membre membre) {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("membre",new Membre());
+        return new ModelAndView("amazon/membre/connexion");
+    }
+
     @RequestMapping(value = {"/connect"}, method = RequestMethod.POST)
-    public java.lang.String connect(@ModelAttribute @Valid Membre membre) {
+    public String connect(@ModelAttribute @Valid Membre membre) {
         Membre mMembre = membreService.getMemberByName(membre.getNom(),membre.getPassword());
-        if(mMembre.getId() != 1L){
+        if(mMembre.getNom() != null){
             this.httpSession.setAttribute("membre",mMembre);
-            return "account";
+            return "redirect:/account";
         }else{
-            return "connect";
+            return "redirect:/connexion";
         }
     }
 
+    @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
+    public ModelAndView registerUser() {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        model.put("membre",new Membre());
+        return new ModelAndView("amazon/membre/register",model);
+    }
+
+    @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
+    public String register(@ModelAttribute @Valid Membre membre) {
+        membre.setActif(0);
+        membre.setPrenium(0);
+        membre.setCompte(250.50);
+        membreService.saveMember(membre);
+        return "redirect:/connexion";
+    }
+
+    @RequestMapping(value = {"/account"}, method = RequestMethod.GET)
+    public String account() {
+        if(this.httpSession.getAttribute("membre") != null)
+            return "amazon/membre/account";
+        else
+            return "redirect:/connexion";
+    }
+
     @RequestMapping(value = {"/update"}, method = RequestMethod.POST)
-    public java.lang.String update(@ModelAttribute @Valid Membre membre) {
+    public String update(@ModelAttribute @Valid Membre membre) {
         if(this.httpSession.getAttribute("membre") != null){
             membreService.updateInformation(membre);
         }
         return "modifyaccount";
     }
 
-    @RequestMapping(value = {"/deconnexion"}, method = RequestMethod.POST)
-    public java.lang.String deconnexion() {
+    @RequestMapping(value = {"/deconnexion"}, method = RequestMethod.GET)
+    public String deconnexion() {
         if(this.httpSession.getAttribute("membre") != null){
             this.httpSession.invalidate();
         }
-        return "redirect:/connect";
+        return "redirect:/connexion";
     }
 }

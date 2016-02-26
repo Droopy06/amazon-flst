@@ -38,8 +38,11 @@ public class MembreMapperImpl implements MembreMapper {
     public Membre getMemberByName(String name, String password) {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Membre> membres = session.createQuery("from Membre where name=" + name + "and password ="+password).list();
+        List<Membre> membres = session.createQuery("from Membre where nom='" + name + "' and password ='"+password+"' and actif = 1").list();
         session.close();
+        if(membres.isEmpty()) {
+            return new Membre();
+        }
         return membres.get(0);
     }
 

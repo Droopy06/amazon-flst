@@ -26,7 +26,7 @@ public class membreTestController {
         membre.setCp("59000");
         membre.setPays("France");
         membre.setPrenium(1);
-        membre.setCompte("250");
+        membre.setCompte(255.99);
         membreService.saveMember(membre);
         return "";
     }

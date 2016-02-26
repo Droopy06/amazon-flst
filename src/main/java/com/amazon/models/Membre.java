@@ -22,7 +22,7 @@ public class Membre {
     private @Getter @Setter String adresse;
     private @Getter @Setter String cp;
     private @Getter @Setter String pays;
-    private @Getter @Setter String compte;
+    private @Getter @Setter double compte;
     private @Getter @Setter String token;
     private @Getter @Setter String password;
     private @Getter @Setter int actif;
