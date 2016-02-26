@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * Created by prog on 27/01/2016.
  */
 @Entity
-@Table(name = "membre")
+@Table(name = "Membre")
 public class Membre {
 
     @Id @GeneratedValue

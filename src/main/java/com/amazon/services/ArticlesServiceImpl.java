@@ -27,6 +27,16 @@ public class ArticlesServiceImpl implements ArticlesService {
     }
 
     @Override
+    public List<Articles> getArticlesByCategory(long id) {
+        return articlesMapper.getArticlesByCategory(id);
+    }
+
+    @Override
+    public List<Articles> getArticlesByYear(String date) {
+        return articlesMapper.getArticlesByYear(date);
+    }
+
+    @Override
     public Articles getArticleByName(String name) {
         return articlesMapper.getArticleByName(name);
     }

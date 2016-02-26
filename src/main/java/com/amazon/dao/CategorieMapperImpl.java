@@ -37,6 +37,24 @@ public class CategorieMapperImpl implements CategorieMapper {
     }
 
     @Override
+    public Categorie getCategorieByName(String name) {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        List<Categorie> categories = session.createQuery("from Categorie where nom="+name).list();
+        session.close();
+        return categories.get(0);
+    }
+
+    @Override
+    public List<Categorie> getCategorieByFamilly(String familly) {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        List<Categorie> categories = session.createQuery("from Categorie where famille="+familly).list();
+        session.close();
+        return categories;
+    }
+
+    @Override
     public void updateCategorie(Categorie categorie) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();

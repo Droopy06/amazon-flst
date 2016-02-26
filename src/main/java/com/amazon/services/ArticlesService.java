@@ -10,6 +10,8 @@ import java.util.List;
 public interface ArticlesService {
     void saveArticle(Articles articles);
     List<Articles> getAllArticles();
+    List<Articles> getArticlesByCategory(long id);
+    List<Articles> getArticlesByYear(String date);
     Articles getArticleByName(String name);
     Articles getArticlesById(long id);
     void updateArticle(Articles articles);

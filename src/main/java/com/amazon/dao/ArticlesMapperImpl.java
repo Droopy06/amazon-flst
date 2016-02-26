@@ -36,6 +36,24 @@ public class ArticlesMapperImpl implements ArticlesMapper {
     }
 
     @Override
+    public List<Articles> getArticlesByCategory(long id) {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        List<Articles> articles = session.createQuery("from Articles where categorie="+id).list();
+        session.close();
+        return articles;
+    }
+
+    @Override
+    public List<Articles> getArticlesByYear(String date) {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        List<Articles> articles = session.createQuery("from Articles where date=DATE('"+date+"')").list();
+        session.close();
+        return articles;
+    }
+
+    @Override
     public Articles getArticleByName(String name) {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();

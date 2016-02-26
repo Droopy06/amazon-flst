@@ -5,6 +5,8 @@ import com.amazon.models.Categorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by LAMOOT Alexandre on 25/02/2016.
  */
@@ -22,6 +24,16 @@ public class CategorieServiceImpl implements CategorieService {
     @Override
     public Categorie getCategorieByName(long id) {
         return categorieMapper.getCategorieByName(id);
+    }
+
+    @Override
+    public Categorie getCategorieByName(String name) {
+        return categorieMapper.getCategorieByName(name);
+    }
+
+    @Override
+    public List<Categorie> getCategorieByFamilly(String familly) {
+        return categorieMapper.getCategorieByFamilly(familly);
     }
 
     @Override
