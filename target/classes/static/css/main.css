@@ -1,0 +1,44 @@
+body {
+    height: 100%;
+}
+body,footer,#body{
+    background: #1F1C1C;
+    text-align: center;
+}
+p,span,h1{
+    color: orange;
+}
+thead{
+    background: gold;
+}
+label{
+    color: whitesmoke;
+}
+span{
+    font-size: 20px;
+}
+.row-no-padding {
+    margin-left: 0;
+    margin-right: 0;
+}
+[class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+input{
+    width: 100%;
+    padding: 15px;
+    color: #242424;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    border-bottom: 1px solid #242424;
+    -moz-transition: border 300ms ease-in-out;
+    -o-transition: border 300ms ease-in-out;
+    -webkit-transition: border 300ms ease-in-out;
+    transition: border 300ms ease-in-out;
+}

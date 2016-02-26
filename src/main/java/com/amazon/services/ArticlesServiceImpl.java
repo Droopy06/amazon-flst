@@ -5,6 +5,8 @@ import com.amazon.models.Articles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by LAMOOT Alexandre on 25/02/2016.
  */
@@ -20,7 +22,7 @@ public class ArticlesServiceImpl implements ArticlesService {
     }
 
     @Override
-    public Articles getAllArticles() {
+    public List<Articles> getAllArticles() {
         return articlesMapper.getAllArticles();
     }
 

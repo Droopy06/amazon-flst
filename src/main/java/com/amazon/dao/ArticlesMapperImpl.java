@@ -27,19 +27,19 @@ public class ArticlesMapperImpl implements ArticlesMapper {
     }
 
     @Override
-    public Articles getAllArticles() {
+    public List<Articles> getAllArticles() {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Articles> articles = session.createQuery("from articles").list();
+        List<Articles> articles = session.createQuery("from Articles").list();
         session.close();
-        return articles.get(0);
+        return articles;
     }
 
     @Override
     public Articles getArticleByName(String name) {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Articles> articles = session.createQuery("from articles where name="+name).list();
+        List<Articles> articles = session.createQuery("from Articles where name="+name).list();
         session.close();
         return articles.get(0);
     }
@@ -48,7 +48,7 @@ public class ArticlesMapperImpl implements ArticlesMapper {
     public Articles getArticlesById(long id) {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Articles> articles = session.createQuery("from articles where id="+id).list();
+        List<Articles> articles = session.createQuery("from Articles where id="+id).list();
         session.close();
         return articles.get(0);
     }
