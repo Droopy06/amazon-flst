@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class MainController {
 
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-    public String home() {
+    public ModelAndView home() {
         HashMap<String, Object> model = new HashMap<String, Object>();
         List<Articles> articles = articlesService.getAllArticles();
         List<String> categories = new ArrayList<>();
@@ -37,7 +38,7 @@ public class MainController {
         }
         model.put("articles",articles);
         model.put("categories",categories);
-        return "amazon/home";
+        return new ModelAndView("amazon/home",model);
     }
 
 }

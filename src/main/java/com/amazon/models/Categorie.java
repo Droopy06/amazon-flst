@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * Created by LAMOOT Alexandre on 24/02/2016.
  */
 @Entity
-@Table(name = "categorie")
+@Table(name = "Categorie")
 public class Categorie {
 
     @Id @GeneratedValue
