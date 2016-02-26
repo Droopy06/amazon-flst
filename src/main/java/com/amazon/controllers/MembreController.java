@@ -29,7 +29,7 @@ public class MembreController {
     public ModelAndView connexion(@ModelAttribute @Valid Membre membre) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("membre",new Membre());
-        return new ModelAndView("amazon/membre/connexion");
+        return new ModelAndView("amazon/membre/connexion",model);
     }
 
     @RequestMapping(value = {"/connect"}, method = RequestMethod.POST)

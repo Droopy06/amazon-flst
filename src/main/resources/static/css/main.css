@@ -1,8 +1,8 @@
 body {
-    height: 100%;
+    background: transparent url("../images/texture.png") repeat scroll 0 0;
+    overflow-x: hidden;
 }
 body,footer,#body{
-    background: #1F1C1C;
     text-align: center;
 }
 p,span,h1{
@@ -41,4 +41,89 @@ input{
     -o-transition: border 300ms ease-in-out;
     -webkit-transition: border 300ms ease-in-out;
     transition: border 300ms ease-in-out;
+}
+.logo{
+    width: 50px;
+}
+.container{
+    margin-top: 55px;
+    min-height: 300px;
+}
+.main {
+    position: relative;
+    display: block;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid #f0c041;
+    left: 0;
+}
+footer {
+    background-image: url("../images/texture.png");
+    padding: 50px;
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #f0c041;
+}
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+footer .footer__block {
+    margin-bottom: 25px;
+}
+footer .footer__title {
+    display: block;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #848484;
+    font-size: 26px;
+    line-height: 36px;
+    color: #848484;
+    text-transform: uppercase;
+}
+footer .footer__list {
+    list-style-type: none;
+    text-align: center;
+}
+footer .footer__list li {
+    margin-top: 15px;
+    -webkit-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+footer a:hover {
+    color: #f0c041;
+}
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover, a:focus {
+    color: #23527c;
+    text-decoration: underline;
+}
+footer .footer__copyright {
+    display: block;
+    list-style-type: none;
+}
+.item_fb, .item_tw, .item_gp {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    border: 1px solid #fff;
+    border-radius: 50px;
+}
+.item_fb .fa, .item_tw .fa, .item_gp .fa {
+    padding: 12px;
+    font-size: 1.5em;
 }
