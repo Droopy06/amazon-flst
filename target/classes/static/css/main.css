@@ -5,7 +5,7 @@ body {
 body,footer,#body{
     text-align: center;
 }
-p,span,h1{
+p,span,h1,h2{
     color: orange;
 }
 thead{
@@ -48,6 +48,22 @@ input{
 .container{
     margin-top: 55px;
     min-height: 300px;
+}
+.image_produit{
+    width: 150px;
+    margin: auto;
+}
+.image_container{
+    display: block;
+    min-height: 150px;
+}
+.span_produit{
+    font-size: 14px;
+    color: white;
+    text-align: left;
+}
+.inline-block{
+    display: inline-block !important;
 }
 .main {
     position: relative;
@@ -114,6 +130,9 @@ a:hover, a:focus {
 footer .footer__copyright {
     display: block;
     list-style-type: none;
+}
+footer .footer__copyright li {
+    display: inline-block;
 }
 .item_fb, .item_tw, .item_gp {
     display: inline-block;

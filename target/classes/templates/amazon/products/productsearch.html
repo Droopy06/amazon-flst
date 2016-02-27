@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
-              href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
-              href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css"/>
-        <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-        <title>Amazon</title>
-    </head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
+          href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <title>Amazon project</title>
+</head>
     <body>
         <div class="main">
             <header>
@@ -45,6 +45,7 @@
                                         </li>
                                     </ul>
                                 </li>
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -59,45 +60,26 @@
                     </nav>
                 </div>
             </header>
-
             <div class="container">
                 <div class="row row-no-padding">
-                    <div class="col-md-8 col-md-offset-2">
-                        <span><i class="fa fa-users"></i> Espace de connexion</span>
+                    <div class="col-sm-8 col-md-8">
+                        <h2 class="inline-block">Liste des produits de l'année: </h2>
+                        <span class="inline-block" th:text="${categorie}"></span>
                     </div>
                 </div>
-                <form name="connexion" action="/connect" method="post" th:object="${membre}">
-                    <div class="row row-no-padding">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="form-group">
-                                <label for="nom">Nom</label>
-                                <input type="text" th:field="*{nom}" placeholder="Entrez votre nom"/>
-                            </div>
+                <div class="row row-no-padding">
+                    <div class="col-sm-4 col-md-4" th:each="item,iterStat : ${articles}">
+                        <div class="image_container">
+                            <img class="image_produit" th:src="${item.images}" th:alt="${item.nom}"/>
                         </div>
+                        <span class="span_produit">Nom: </span>
+                        <span class="span_produit" th:text="${item.nom}"></span><br />
+                        <span class="span_produit">Qte: </span>
+                        <span class="span_produit" th:text="${item.qte}"></span><br />
+                        <span class="span_produit">Prix: </span>
+                        <span class="span_produit" th:text="${item.prix}"></span><br />
                     </div>
-                    <div class="row row-no-padding">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" th:field="*{password}" placeholder="Entrez votre password"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row row-no-padding">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="form-group">
-                                <input type="submit" name="valider" value="Se connecter"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row row-no-padding">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="form-group">
-                                <span><a href="register">Vous souhaitez vous inscrire?</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
             <footer>
                 <div class="container-fluid">

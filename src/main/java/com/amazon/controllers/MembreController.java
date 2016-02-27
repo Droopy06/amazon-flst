@@ -1,6 +1,9 @@
 package com.amazon.controllers;
 
+import com.amazon.models.Articles;
 import com.amazon.models.Membre;
+import com.amazon.services.ArticlesService;
+import com.amazon.services.CategorieService;
 import com.amazon.services.MembreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +26,21 @@ public class MembreController {
     MembreService membreService;
 
     @Autowired
+    CategorieService categorieService;
+
+    @Autowired
+    ArticlesService articlesService;
+
+    @Autowired
     HttpSession httpSession;
 
     @RequestMapping(value = {"/connexion"}, method = RequestMethod.GET)
     public ModelAndView connexion(@ModelAttribute @Valid Membre membre) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("membre",new Membre());
+        model.put("article",new Articles());
+        model.put("support",articlesService.getAllArticles());
+        model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/membre/connexion",model);
     }
 
@@ -47,6 +59,9 @@ public class MembreController {
     public ModelAndView registerUser() {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("membre",new Membre());
+        model.put("article",new Articles());
+        model.put("support",articlesService.getAllArticles());
+        model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/membre/register",model);
     }
 

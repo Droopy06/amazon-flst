@@ -37,6 +37,11 @@ public class ArticlesServiceImpl implements ArticlesService {
     }
 
     @Override
+    public List<Articles> getArticlesByFormat(String format) {
+        return articlesMapper.getArticlesByFormat(format);
+    }
+
+    @Override
     public Articles getArticleByName(String name) {
         return articlesMapper.getArticleByName(name);
     }

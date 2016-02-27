@@ -32,6 +32,11 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
+    public List<Categorie> getAllCategories() {
+        return categorieMapper.getAllCategories();
+    }
+
+    @Override
     public List<Categorie> getCategorieByFamilly(String familly) {
         return categorieMapper.getCategorieByFamilly(familly);
     }

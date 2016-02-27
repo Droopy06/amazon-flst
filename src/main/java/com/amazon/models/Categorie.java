@@ -19,4 +19,5 @@ public class Categorie {
     private @Getter @Setter long id;
     private @Getter @Setter String nom;
     private @Getter @Setter String famille;
+    private @Getter @Setter String url;
 }

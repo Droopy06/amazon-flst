@@ -12,6 +12,7 @@ public interface ArticlesMapper {
     List<Articles> getAllArticles();
     List<Articles> getArticlesByCategory(long id);
     List<Articles> getArticlesByYear(String date);
+    List<Articles> getArticlesByFormat(String format);
     Articles getArticleByName(String name);
     Articles getArticlesById(long id);
     void updateArticle(Articles articles);
