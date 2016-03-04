@@ -29,6 +29,7 @@ public class ProductsController {
     @Autowired
     CategorieService categorieService;
 
+
     @RequestMapping(value = {"/products"}, method = RequestMethod.GET)
     public ModelAndView home() {
         HashMap<String, Object> model = new HashMap<String, Object>();
@@ -47,6 +48,18 @@ public class ProductsController {
         model.put("support",articlesService.getAllArticles());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/products",model);
+    }
+
+    @RequestMapping(value = {"/product/{produit}"}, method = RequestMethod.GET)
+    public ModelAndView detailProduct(@PathVariable(value = "produit") long idProduit) {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        Articles article = articlesService.getArticlesById(idProduit);
+        Categorie categorie = categorieService.getCategorieByName(article.getCategorie());
+        model.put("article",article);
+        model.put("categorie",categorie.getNom());
+        model.put("support",articlesService.getAllArticles());
+        model.put("allcategories",categorieService.getAllCategories());
+        return new ModelAndView("amazon/products/detailproduct",model);
     }
 
     @RequestMapping(value = {"/product/search/{cat}"}, method = RequestMethod.GET)

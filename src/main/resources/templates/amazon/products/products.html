@@ -68,7 +68,7 @@
                 <div class="row row-no-padding">
                     <div class="col-sm-4 col-md-4" th:each="item,iterStat : ${articles}">
                         <div class="image_container">
-                            <img class="image_produit" th:src="${item.images}" th:alt="${item.nom}"/>
+                            <a th:href="'/product/'+${item.id}"><img class="image_produit" th:src="${item.images}" th:alt="${item.nom}"/></a>
                         </div>
                         <span class="span_produit">Nom: </span>
                         <span class="span_produit" th:text="${item.nom}"></span><br />

@@ -61,21 +61,8 @@
             </header>
             <div class="container">
                 <div class="row row-no-padding">
-                    <div class="col-sm-4 col-md-4">
-                        <h2>Liste des produits</h2>
-                    </div>
-                </div>
-                <div class="row row-no-padding">
-                    <div class="col-sm-4 col-md-4" th:each="item,iterStat : ${articles}">
-                        <div class="image_container">
-                            <a th:href="'/product/'+${item.id}"><img class="image_produit" th:src="${item.images}" th:alt="${item.nom}"/></a>
-                        </div>
-                        <span class="span_produit">Nom: </span>
-                        <span class="span_produit" th:text="${item.nom}"></span><br />
-                        <span class="span_produit">Qte: </span>
-                        <span class="span_produit" th:text="${item.qte}"></span><br />
-                        <span class="span_produit">Prix: </span>
-                        <span class="span_produit" th:text="${item.prix}"></span><br />
+                    <div class="col-sm-8 col-md-8 introduction_aside">
+                        <h2>Mon panier</h2>
                     </div>
                 </div>
             </div>

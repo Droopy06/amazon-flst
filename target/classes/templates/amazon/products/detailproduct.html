@@ -61,21 +61,42 @@
             </header>
             <div class="container">
                 <div class="row row-no-padding">
-                    <div class="col-sm-4 col-md-4">
-                        <h2>Liste des produits</h2>
+                    <div class="col-sm-8 col-md-8 introduction_aside">
+                        <h2 th:text="${article.nom}"></h2>
+                    </div>
+                    <div class="col-sm-4 col-md-4 introduction_aside">
+                        <h2>Information</h2>
                     </div>
                 </div>
                 <div class="row row-no-padding">
-                    <div class="col-sm-4 col-md-4" th:each="item,iterStat : ${articles}">
+                    <div class="col-sm-8 col-md-8 introduction_aside">
                         <div class="image_container">
-                            <a th:href="'/product/'+${item.id}"><img class="image_produit" th:src="${item.images}" th:alt="${item.nom}"/></a>
+                            <img class="image_produit" th:src="${article.images}" th:alt="${article.nom}"/>
                         </div>
-                        <span class="span_produit">Nom: </span>
-                        <span class="span_produit" th:text="${item.nom}"></span><br />
-                        <span class="span_produit">Qte: </span>
-                        <span class="span_produit" th:text="${item.qte}"></span><br />
-                        <span class="span_produit">Prix: </span>
-                        <span class="span_produit" th:text="${item.prix}"></span><br />
+                        <p th:text="${article.description}"></p>
+                    </div>
+                    <div class="col-sm-4 col-md-4 introduction_aside">
+                        <ul id="introduction_aside--infos">
+                            <li th:text="'Nom : '+${article.nom}"></li>
+                            <li th:text="'Catégorie : '+${categorie}"></li>
+                            <li th:text="'Qte : '+${article.qte}"></li>
+                            <li th:text="'Format : '+${article.format}"></li>
+                            <li th:if="${article.dispo}"> Disponible</li>
+                            <li th:unless="${article.dispo}"> Non disponible</li>
+                            <li th:text="'A partir de : '+${article.prix}+' €'"></li>
+                        </ul>
+                        <div id="introduction_aside--social">
+                            <a class="item_fb" th:href="'https://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/product/'+${article.id}" target="blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a class="item_tw" th:href="'http://twitter.com/intent/tweet/?url=http://localhost:8080/product/'+${article.id}" target="blank">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a class="item_gp" th:href="'https://plus.google.com/share?url=http://localhost:8080/product/'+${article.id}" target="blank">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </div>
+                        <a class="button" th:href="'/panier/ajout/'+${article.id}"><i class="fa fa-cart-plus"></i> Ajouter au panier</a>
                     </div>
                 </div>
             </div>

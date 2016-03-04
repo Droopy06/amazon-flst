@@ -65,6 +65,49 @@ input{
 .inline-block{
     display: inline-block !important;
 }
+#introduction_aside--social a{
+    color: white;
+}
+body .introduction .introduction_aside #introduction_aside--social a:hover, .introduction_aside #introduction_aside--social a:focus {
+    color: #f0c041;
+}
+#introduction_aside--infos {
+    padding: 0 25px;
+}
+#introduction_aside--infos li {
+    margin-top: 5px;
+    color: #fff;
+}
+#introduction_aside--social {
+    margin-top: 25px;
+}
+.introduction_aside {
+    position: relative;
+    padding: 0 25px;
+    text-align: left;
+}
+.introduction_aside .button {
+    float: left;
+    width: 200px;
+    margin-top: 25px;
+}
+.button {
+    cursor: pointer;
+    display: block;
+    padding: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: solid 1px #fff;
+    background-color: transparent;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
 .main {
     position: relative;
     display: block;
