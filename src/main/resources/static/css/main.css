@@ -52,6 +52,7 @@ input{
 .image_produit{
     width: 150px;
     margin: auto;
+    max-height: 150px;
 }
 .image_container{
     display: block;
@@ -112,7 +113,12 @@ body .introduction .introduction_aside #introduction_aside--social a:hover, .int
      font-style: italic;
      font-weight: 600;
 }
-
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
 .button {
     cursor: pointer;
     display: block;
@@ -151,6 +157,7 @@ footer {
     text-align: center;
     color: #fff;
     border-top: 1px solid #f0c041;
+    margin-top: 45px;
 }
 .container-fluid {
     margin-right: auto;

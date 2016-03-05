@@ -86,7 +86,7 @@
         <div class="row row-no-padding">
             <div class="col-md-4 col-md-offset-4">
                 <div class="form-group">
-                    <label for="adresse">Adresse</label>
+                    <label for="adresse">Adresse postale</label>
                     <input type="text" th:field="*{adresse}" th:errorclass="error" placeholder="Entrez votre adresse"/>
                 </div>
             </div>
@@ -94,8 +94,8 @@
         <div class="row row-no-padding">
             <div class="col-md-4 col-md-offset-4">
                 <div class="form-group">
-                    <label for="cp">Cp</label>
-                    <input type="text" th:field="*{cp}" th:errorclass="error" placeholder="Entrez votre cp"/>
+                    <label for="cp">Code postal</label>
+                    <input type="text" th:field="*{cp}" th:errorclass="error" placeholder="Entrez votre code postal"/>
                 </div>
             </div>
         </div>
@@ -110,8 +110,16 @@
         <div class="row row-no-padding">
             <div class="col-md-4 col-md-offset-4">
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Entrez votre password"/>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Entrez votre mot de passe"/>
+                </div>
+            </div>
+        </div>
+        <div class="row row-no-padding">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-group">
+                    <label>Confirmation du mot de passe</label>
+                    <!-- <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Confirmez votre mot de passe"/> -->
                 </div>
             </div>
         </div>

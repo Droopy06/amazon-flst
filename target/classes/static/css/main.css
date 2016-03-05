@@ -112,7 +112,12 @@ body .introduction .introduction_aside #introduction_aside--social a:hover, .int
      font-style: italic;
      font-weight: 600;
 }
-
+.green {
+    color: green;
+}
+.red {
+    color: red;
+}
 .button {
     cursor: pointer;
     display: block;
