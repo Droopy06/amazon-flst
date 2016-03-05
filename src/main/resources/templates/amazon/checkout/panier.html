@@ -10,118 +10,174 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     <title>Amazon project</title>
 </head>
-    <body>
-        <div class="main">
-            <header>
-                <!-- Navbar -->
-                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-                    <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="/">
-                                    <img alt="Amazon"  src="../../static/images/retour_vers_le_futur.jpg" th:src="@{/images/retour_vers_le_futur.jpg}" class="logo"/>
-                                    <span>Amazon</span>
-                                </a>
-                            </div>
-                            <ul class="nav navbar-nav navbar-right">
-                                <form class="navbar-form navbar-left" role="search">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search"/>
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Submit</button>
-                                </form>
-                                <li><a href="/products">Nos produits</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li th:each="item,iterStat : ${allcategories}">
-                                            <a th:href="${item.url}" th:text="${item.nom}">Films</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li th:each="item,iterStat : ${support}">
-                                            <a th:href="'/support/'+${item.format}" th:text="${item.format}">Films</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="/connexion">Mon compte</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </header>
-            <div class="container">
-                <div class="row row-no-padding">
-                    <div class="col-sm-8 col-md-8 introduction_aside">
-                        <h2>Mon panier</h2>
+<body>
+<div class="main">
+    <header>
+        <!-- Navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                            <img alt="Amazon"  src="../../static/images/retour_vers_le_futur.jpg" th:src="@{/images/retour_vers_le_futur.jpg}" class="logo"/>
+                            <span>Amazon</span>
+                        </a>
                     </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search"/>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                        <li><a href="/products">Nos produits</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li th:each="item,iterStat : ${allcategories}">
+                                    <a th:href="${item.url}" th:text="${item.nom}">Films</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li th:each="item,iterStat : ${support}">
+                                    <a th:href="'/support/'+${item.format}" th:text="${item.format}">Films</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/connexion">Mon compte</a></li>
+                        <li><a href="/panier"><i class="fa fa-shopping-bag"></i></a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row row-no-padding">
+            <div class="col-sm-12 col-md-12 recap_block">
+                <h2>Mon panier</h2>
+                <p class="small hidden-lg hidden-md hidden-sm">
+                    Attention : sur petits écrans (smartphones ou certaines tablettes), n'oubliez pas de préciser le nombre de participants en déplaçant le tableau ci-dessous vers la gauche&nbsp;!
+                </p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Articles</td>
+                                <td>Prix</td>
+                                <td>Quantité</td>
+                                <td class="price__total"><span class="price pull-right">Total</span></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            </tr>
+                            <tr th:each="item,iterStat : ${articles}">
+                                <td>
+                                    <a th:href="'/product/'+${item.id}"><h3 th:text="${item.nom}"></h3></a>
+                                    <p></p>
+                                </td>
+                                <td>
+                                    <span class="price" id="price"><span id="prix_personne" th:text="${item.prix}"></span><sup> €</sup></span>
+                                </td>
+                                <td>
+                                    <div class="participants noselect">
+                                                <span class="substractParticipants">
+                                                    <i class="fa fa-minus" title="Supprimer"></i>
+                                                </span>
+                                        <span id="nombre_participants">1</span>
+                                                <span class="addParticipants">
+                                                    <i class="fa fa-plus" title="Ajouter"></i>
+                                                </span>
+                                        <input type="hidden" name="nb_personne" id="nb_personne" value="1"/>
+                                        <br/><span class="small"  th:text="'(quantite : '+${item.qte}+')'"></span>
+                                    </div>
+                                </td>
+                                <td class="price__total">
+                                            <span class="price" id="total">
+                                                <span class="pull-right" id="result_total" th:text="${item.prix}"><sup>&nbsp;€</sup></span>
+                                            </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr/>
                 </div>
             </div>
-            <footer>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-4 col-md-4 footer__block">
-                            <span class="footer__title">Amazon</span>
-                            <ul class="footer__list">
-                                <li>41 rue du port</li>
-                                <li>59000 Lille</li>
-                                <li>
-                                    <a href="tel:0658530466">
-                                        <i class="fa fa-phone"></i> 03 20 01 02 03
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="mailto:lamootalexandre@gmail.com">
-                                        <i class="fa fa-envelope"></i> contact@amazon.com
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4 col-md-4 footer__block">
-                            <span class="footer__title">Plan du site</span>
-                            <ul class="footer__list">
-                                <li><a href="/">Accueil</a></li>
-                                <li><a href="/products">Nos produits</a></li>
-                                <li><a href="/connexion">Mon compte</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4 col-md-4 footer__block">
-                            <span class="footer__title">tenez-vous informés</span>
-                            <ul class="footer__list">
-                                <a class="item_fb" href="" title="Suivez-nous sur Facebook !" target="blank">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                <a class="item_tw" href="" title="Suivez-nous sur Twitter !" target="blank">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a class="item_gp" href="" title="Suivez-nous sur Google + !" target="blank">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="footer__copyright">
-                                <hr/>
-                                <li>©&nbsp;Amazon • 2016</li>
-                                <li><a href="" rel="nofollow">Mentions légales</a> • </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-            </footer>
         </div>
-    </body>
+        <div class="row row-no-padding">
+            <div class="col-sm-2 col-md-2 col-md-offset-4">
+                <a class="button" th:href="'/panier/delete'"><i class="fa fa-trash"></i> Supprimer</a>
+            </div>
+            <div class="col-sm-2 col-md-2 col-md-offset-1">
+                <a class="button" th:href="'/panier/confirm'"><i class="fa fa-check"></i> Confirmer</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4 col-md-4 footer__block">
+                    <span class="footer__title">Amazon</span>
+                    <ul class="footer__list">
+                        <li>41 rue du port</li>
+                        <li>59000 Lille</li>
+                        <li>
+                            <a href="tel:0658530466">
+                                <i class="fa fa-phone"></i> 03 20 01 02 03
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:lamootalexandre@gmail.com">
+                                <i class="fa fa-envelope"></i> contact@amazon.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-4 footer__block">
+                    <span class="footer__title">Plan du site</span>
+                    <ul class="footer__list">
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/products">Nos produits</a></li>
+                        <li><a href="/connexion">Mon compte</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-4 footer__block">
+                    <span class="footer__title">tenez-vous informés</span>
+                    <ul class="footer__list">
+                        <a class="item_fb" href="" title="Suivez-nous sur Facebook !" target="blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="item_tw" href="" title="Suivez-nous sur Twitter !" target="blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="item_gp" href="" title="Suivez-nous sur Google + !" target="blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="footer__copyright">
+                        <hr/>
+                        <li>©&nbsp;Amazon • 2016</li>
+                        <li><a href="" rel="nofollow">Mentions légales</a> • </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    </footer>
+</div>
+</body>
 </html>

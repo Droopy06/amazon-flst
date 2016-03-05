@@ -91,6 +91,28 @@ body .introduction .introduction_aside #introduction_aside--social a:hover, .int
     width: 200px;
     margin-top: 25px;
 }
+.recap_block{
+    width: 100%;
+    color: #242424;
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.recap_block h3{
+    color: white;
+}
+.recap-block table tr {
+    border-bottom: 1px solid #ddd;
+}
+.recap-block table tr td.price__total {
+    width: 15%;
+}
+.recap-block table tr td .price {
+     font-size: 20px;
+     font-style: italic;
+     font-weight: 600;
+}
+
 .button {
     cursor: pointer;
     display: block;
