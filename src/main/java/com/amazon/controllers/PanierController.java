@@ -35,7 +35,9 @@ public class PanierController {
     @RequestMapping(value = {"/panier/ajout/{article}"}, method = RequestMethod.GET)
     public String addPanier(@PathVariable(value = "article") long idProduit,
                                   HttpServletResponse response) {
-        response.addCookie(new Cookie("panier",String.valueOf(idProduit)));
+        Cookie cookie = new Cookie("panier",String.valueOf(idProduit));
+        cookie.setMaxAge(10000);
+        response.addCookie(cookie);
         return "redirect:/panier";
     }
 
@@ -45,8 +47,10 @@ public class PanierController {
         HashMap<String, Object> model = new HashMap<String, Object>();
         List<Articles> articles = new ArrayList<>();
         Cookie[] panierCookie = request.getCookies();
-        if(!Objects.equals(panierCookie[0].getValue(), ""))
-            articles.add(articlesService.getArticlesById(Long.valueOf(panierCookie[0].getValue())));
+        if(panierCookie != null){
+            if(!Objects.equals(panierCookie[0].getValue(), ""))
+                articles.add(articlesService.getArticlesById(Long.valueOf(panierCookie[0].getValue())));
+        }
         model.put("articles",articles);
         model.put("support",articlesService.getAllArticles());
         model.put("allcategories",categorieService.getAllCategories());
