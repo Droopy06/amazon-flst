@@ -48,8 +48,16 @@ public class PanierController {
         List<Articles> articles = new ArrayList<>();
         Cookie[] panierCookie = request.getCookies();
         if(panierCookie != null){
-            if(!Objects.equals(panierCookie[0].getValue(), ""))
-                articles.add(articlesService.getArticlesById(Long.valueOf(panierCookie[0].getValue())));
+            int i = 0;
+            boolean cookieExists = false;
+            while (!cookieExists && i < panierCookie.length) {
+                if (panierCookie[i].getName().equals("panier")) {
+                    cookieExists = true;
+                    articles.add(articlesService.getArticlesById(Long.valueOf(panierCookie[i].getValue())));
+                } else {
+                    i++;
+                }
+            }
         }
         model.put("articles",articles);
         model.put("support",articlesService.getAllArticles());
