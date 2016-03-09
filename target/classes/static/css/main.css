@@ -52,6 +52,7 @@ input{
 .image_produit{
     width: 150px;
     margin: auto;
+    max-height: 150px;
 }
 .image_container{
     display: block;
@@ -156,6 +157,7 @@ footer {
     text-align: center;
     color: #fff;
     border-top: 1px solid #f0c041;
+    margin-top: 45px;
 }
 .container-fluid {
     margin-right: auto;

@@ -27,6 +27,11 @@ public class ArticlesServiceImpl implements ArticlesService {
     }
 
     @Override
+    public List getAllSupport() {
+        return articlesMapper.getAllSupport();
+    }
+
+    @Override
     public List<Articles> getArticlesByCategory(long id) {
         return articlesMapper.getArticlesByCategory(id);
     }

@@ -31,24 +31,25 @@ public class MembreController {
     @Autowired
     ArticlesService articlesService;
 
-    @Autowired
-    HttpSession httpSession;
-
     @RequestMapping(value = {"/connexion"}, method = RequestMethod.GET)
-    public ModelAndView connexion(@ModelAttribute @Valid Membre membre) {
+    public ModelAndView connexion(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
-        model.put("membre",new Membre());
-        model.put("article",new Articles());
-        model.put("support",articlesService.getAllArticles());
-        model.put("allcategories",categorieService.getAllCategories());
-        return new ModelAndView("amazon/membre/connexion",model);
+        if(this.isConnect(httpSession)){
+            return new ModelAndView("redirect:/account",model);
+        }else{
+            model.put("membre",new Membre());
+            model.put("article",new Articles());
+            model.put("support",articlesService.getAllArticles());
+            model.put("allcategories",categorieService.getAllCategories());
+            return new ModelAndView("amazon/membre/connexion",model);
+        }
     }
 
     @RequestMapping(value = {"/connect"}, method = RequestMethod.POST)
-    public String connect(@ModelAttribute @Valid Membre membre) {
+    public String connect(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
         Membre mMembre = membreService.getMemberByName(membre.getNom(),membre.getPassword());
         if(mMembre.getNom() != null){
-            this.httpSession.setAttribute("membre",mMembre);
+            httpSession.setAttribute("membre",mMembre);
             return "redirect:/account";
         }else{
             return "redirect:/connexion";
@@ -75,26 +76,38 @@ public class MembreController {
     }
 
     @RequestMapping(value = {"/account"}, method = RequestMethod.GET)
-    public String account() {
-        if(this.httpSession.getAttribute("membre") != null)
+    public String account(HttpSession httpSession) {
+        if(httpSession.getAttribute("membre") != null)
             return "amazon/membre/account";
         else
             return "redirect:/connexion";
     }
 
     @RequestMapping(value = {"/update"}, method = RequestMethod.POST)
-    public String update(@ModelAttribute @Valid Membre membre) {
-        if(this.httpSession.getAttribute("membre") != null){
+    public String update(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
+        if(httpSession.getAttribute("membre") != null){
             membreService.updateInformation(membre);
         }
         return "modifyaccount";
     }
 
     @RequestMapping(value = {"/deconnexion"}, method = RequestMethod.GET)
-    public String deconnexion() {
-        if(this.httpSession.getAttribute("membre") != null){
-            this.httpSession.invalidate();
+    public String deconnexion(HttpSession httpSession) {
+        if(httpSession.getAttribute("membre") != null){
+            httpSession.setAttribute("membre",null);
         }
         return "redirect:/connexion";
+    }
+
+    private boolean isConnect(HttpSession session){
+        boolean isConnect = false;
+        if(session.getAttribute("membre") != null){
+            if(!session.getAttribute("membre").equals(""))
+                isConnect = true;
+            else
+                isConnect = false;
+        }else
+            isConnect = false;
+        return isConnect;
     }
 }

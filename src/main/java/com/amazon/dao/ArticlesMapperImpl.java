@@ -2,8 +2,11 @@ package com.amazon.dao;
 
 import com.amazon.HibernateUtil;
 import com.amazon.models.Articles;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,6 +36,15 @@ public class ArticlesMapperImpl implements ArticlesMapper {
         List<Articles> articles = session.createQuery("from Articles").list();
         session.close();
         return articles;
+    }
+
+    @Override
+    public List getAllSupport() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(Articles.class);
+        criteria.setProjection(Projections.distinct(Projections.countDistinct("format")));
+        return criteria.list();
     }
 
     @Override

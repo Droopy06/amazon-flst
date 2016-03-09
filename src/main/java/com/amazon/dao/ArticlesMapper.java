@@ -10,6 +10,7 @@ import java.util.List;
 public interface ArticlesMapper {
     void saveArticle(Articles articles);
     List<Articles> getAllArticles();
+    List<Articles> getAllSupport();
     List<Articles> getArticlesByCategory(long id);
     List<Articles> getArticlesByYear(String date);
     List<Articles> getArticlesByFormat(String format);
