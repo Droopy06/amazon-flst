@@ -26,7 +26,7 @@
                     </button>
                     <a class="navbar-brand" href="/">
                         <img alt="Amazon"  src="../../static/images/retour_vers_le_futur.jpg" th:src="@{/images/retour_vers_le_futur.jpg}" class="logo"/>
-                        <span>Amazon</span>
+                        <span>Misys</span>
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
@@ -67,59 +67,63 @@
         </div>
     </div>
     <form name="connexion" action="/register" method="post" th:object="${membre}">
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" th:field="*{nom}" th:errorclass="error" placeholder="Entrez votre nom"/>
+        <div class="col-md-4 col-md-offset-2">
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" th:field="*{nom}" th:errorclass="error" placeholder="Entrez votre nom"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="prenom">Prenom</label>
+                        <input type="text" th:field="*{prenom}" th:errorclass="error" placeholder="Entrez votre prenom"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="adresse">Adresse postale</label>
+                        <input type="text" th:field="*{adresse}" th:errorclass="error" placeholder="Entrez votre adresse"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="cp">Code postal</label>
+                        <input type="text" th:field="*{cp}" th:errorclass="error" placeholder="Entrez votre code postal"/>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label for="prenom">Prenom</label>
-                    <input type="text" th:field="*{prenom}" th:errorclass="error" placeholder="Entrez votre prenom"/>
+        <div class="col-md-4 col-md">
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="pays">Pays</label>
+                        <input type="text" th:field="*{pays}" th:errorclass="error" placeholder="Entrez votre pays"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label for="adresse">Adresse postale</label>
-                    <input type="text" th:field="*{adresse}" th:errorclass="error" placeholder="Entrez votre adresse"/>
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Entrez votre mot de passe"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label for="cp">Code postal</label>
-                    <input type="text" th:field="*{cp}" th:errorclass="error" placeholder="Entrez votre code postal"/>
-                </div>
-            </div>
-        </div>
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label for="pays">Pays</label>
-                    <input type="text" th:field="*{pays}" th:errorclass="error" placeholder="Entrez votre pays"/>
-                </div>
-            </div>
-        </div>
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Entrez votre mot de passe"/>
-                </div>
-            </div>
-        </div>
-        <div class="row row-no-padding">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="form-group">
-                    <label>Confirmation du mot de passe</label>
-                    <!-- <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Confirmez votre mot de passe"/> -->
+            <div class="row row-no-padding">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label>Confirmation du mot de passe</label>
+                        <input type="password" th:field="*{password}" th:errorclass="error" placeholder="Confirmez votre mot de passe"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,37 +136,16 @@
         </div>
     </form>
 </div>
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4 col-md-4 footer__block">
-                <span class="footer__title">Amazon</span>
-                <ul class="footer__list">
-                    <li>41 rue du port</li>
-                    <li>59000 Lille</li>
-                    <li>
-                        <a href="tel:0658530466">
-                            <i class="fa fa-phone"></i> 03 20 01 02 03
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:lamootalexandre@gmail.com">
-                            <i class="fa fa-envelope"></i> contact@amazon.com
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-md-4 footer__block">
-                <span class="footer__title">Plan du site</span>
-                <ul class="footer__list">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/products">Nos produits</a></li>
-                    <li><a href="/connexion">Mon compte</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-md-4 footer__block">
-                <span class="footer__title">tenez-vous informés</span>
-                <ul class="footer__list">
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                    <ul class="footer__copyright">
+                        <li>©&nbsp;Amazon • 2016</li>
+                        <li><a href="" rel="nofollow">Mentions légales</a> • </li>
+                    </ul>
+                </div>
+                <div class="col-md-16">
                     <a class="item_fb" href="" title="Suivez-nous sur Facebook !" target="blank">
                         <i class="fa fa-facebook"></i>
                     </a>
@@ -172,22 +155,12 @@
                     <a class="item_gp" href="" title="Suivez-nous sur Google + !" target="blank">
                         <i class="fa fa-google-plus"></i>
                     </a>
-                </ul>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="footer__copyright">
-                    <hr/>
-                    <li>©&nbsp;Amazon • 2016</li>
-                    <li><a href="" rel="nofollow">Mentions légales</a> • </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</footer>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    </footer>
 </div>
 </body>
 </html>
