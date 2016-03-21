@@ -46,7 +46,7 @@ public class ProductsController {
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("categories",categories);
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/products",model);
     }
@@ -59,7 +59,7 @@ public class ProductsController {
         Categorie categorie = categorieService.getCategorieByName(article.getCategorie());
         model.put("article",article);
         model.put("categorie",categorie.getNom());
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/detailproduct",model);
     }
@@ -73,7 +73,7 @@ public class ProductsController {
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("categorie",categorie.getNom());
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/productsearch",model);
     }
@@ -94,7 +94,7 @@ public class ProductsController {
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("year",product.getDate());
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/productsearchyear",model);
     }
@@ -107,7 +107,7 @@ public class ProductsController {
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("format",format);
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("categorie",categorieService.getCategorieByName(articles.get(0).getCategorie()).getNom());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/productsearchformat",model);

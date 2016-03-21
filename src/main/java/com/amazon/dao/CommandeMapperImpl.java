@@ -20,7 +20,7 @@ public class CommandeMapperImpl implements CommandeMapper {
     public List<Commandes> findAllCommandeByUser(long id) {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        List<Commandes> commandes = session.createQuery("from Commandes where idMembre="+id).list();
+        List<Commandes> commandes = session.createQuery("from Commandes where idMembre="+id+" order by date desc").list();
         session.close();
         return commandes;
     }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface ArticlesService {
     void saveArticle(Articles articles);
     List<Articles> getAllArticles();
-    List getAllSupport();
+    List<Articles> getAllSupport();
     List<Articles> getArticlesByCategory(long id);
     List<Articles> getArticlesByYear(String date);
     List<Articles> getArticlesByFormat(String format);

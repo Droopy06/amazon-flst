@@ -58,7 +58,7 @@ public class MembreController {
         }else{
             model.put("membre",new Membre());
             model.put("article",new Articles());
-            model.put("support",articlesService.getAllArticles());
+            model.put("support",articlesService.getAllSupport());
             model.put("allcategories",categorieService.getAllCategories());
             model.put("erreur","Erreur lors de la saisie du compte ou il n'est pas activé");
             return new ModelAndView("amazon/membre/connexion",model);
@@ -102,6 +102,9 @@ public class MembreController {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
             model.put("commandes",commandeService.findAllCommandeByUser(membre.getId()));
+            model.put("article",new Articles());
+            model.put("support",articlesService.getAllSupport());
+            model.put("allcategories",categorieService.getAllCategories());
             return new ModelAndView("amazon/membre/account", model);
         }else
             return new ModelAndView("redirect:/connexion",model);

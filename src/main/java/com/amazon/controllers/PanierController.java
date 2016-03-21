@@ -47,7 +47,7 @@ public class PanierController {
             List<Articles> articles = (List<Articles>) httpSession.getAttribute("panier");
             model.put("articles",articles);
         }
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/checkout/panier",model);
     }

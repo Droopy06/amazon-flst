@@ -39,12 +39,13 @@ public class ArticlesMapperImpl implements ArticlesMapper {
     }
 
     @Override
-    public List getAllSupport() {
+    public List<Articles> getAllSupport() {
         sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(Articles.class);
-        criteria.setProjection(Projections.distinct(Projections.countDistinct("format")));
-        return criteria.list();
+        criteria.setProjection(Projections.distinct(Projections.distinct(Projections.property("format"))));
+        List<Articles> articles = criteria.list();
+        return articles;
     }
 
     @Override

@@ -28,7 +28,7 @@ public class MainController {
     public ModelAndView home(HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("article",new Articles());
-        model.put("support",articlesService.getAllArticles());
+        model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/home",model);
     }

@@ -27,7 +27,7 @@ public class ArticlesServiceImpl implements ArticlesService {
     }
 
     @Override
-    public List getAllSupport() {
+    public List<Articles> getAllSupport() {
         return articlesMapper.getAllSupport();
     }
 
