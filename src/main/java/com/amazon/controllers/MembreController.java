@@ -44,7 +44,7 @@ public class MembreController {
         }else{
             model.put("membre",new Membre());
             model.put("article",new Articles());
-            model.put("support",articlesService.getAllArticles());
+            model.put("support",articlesService.getAllSupport());
             model.put("allcategories",categorieService.getAllCategories());
             return new ModelAndView("amazon/membre/connexion",model);
         }
