@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +32,7 @@ public class ProductsController {
 
 
     @RequestMapping(value = {"/products"}, method = RequestMethod.GET)
-    public ModelAndView home() {
+    public ModelAndView home(HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         List<Articles> articles = articlesService.getAllArticles();
         List<List<String>> categories = new ArrayList<>();
@@ -51,7 +52,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = {"/product/{produit}"}, method = RequestMethod.GET)
-    public ModelAndView detailProduct(@PathVariable(value = "produit") long idProduit) {
+    public ModelAndView detailProduct(@PathVariable(value = "produit") long idProduit,
+                                      HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         Articles article = articlesService.getArticlesById(idProduit);
         Categorie categorie = categorieService.getCategorieByName(article.getCategorie());
@@ -63,7 +65,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = {"/product/search/{cat}"}, method = RequestMethod.GET)
-    public ModelAndView searchProduct(@PathVariable(value = "cat") String nom) {
+    public ModelAndView searchProduct(@PathVariable(value = "cat") String nom,
+                                      HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         Categorie categorie = categorieService.getCategorieByName(nom);
         List<Articles> articles = articlesService.getArticlesByCategory(categorie.getId());
@@ -76,7 +79,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = {"/product/search/date"}, method = RequestMethod.POST)
-    public ModelAndView searchProductByDate(@ModelAttribute @Valid Articles product) {
+    public ModelAndView searchProductByDate(@ModelAttribute @Valid Articles product,
+                                            HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         List<Articles> articles = articlesService.getArticlesByYear(product.getDate());
         List<List<String>> categories = new ArrayList<>();
@@ -96,7 +100,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = {"/support/{cat}"}, method = RequestMethod.GET)
-    public ModelAndView searchProductFormat(@PathVariable(value = "cat") String format) {
+    public ModelAndView searchProductFormat(@PathVariable(value = "cat") String format,
+                                            HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         List<Articles> articles = articlesService.getArticlesByFormat(format);
         model.put("articles",articles);

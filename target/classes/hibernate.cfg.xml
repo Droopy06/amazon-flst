@@ -13,5 +13,6 @@
         <mapping class="com.amazon.models.Membre"/>
         <mapping class="com.amazon.models.Categorie"/>
         <mapping class="com.amazon.models.Articles"/>
+        <mapping class="com.amazon.models.Commandes"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,9 +1,11 @@
 package com.amazon.controllers;
 
+import com.amazon.dao.CommandeMapper;
 import com.amazon.models.Articles;
 import com.amazon.models.Membre;
 import com.amazon.services.ArticlesService;
 import com.amazon.services.CategorieService;
+import com.amazon.services.CommandeService;
 import com.amazon.services.MembreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,9 @@ public class MembreController {
 
     @Autowired
     ArticlesService articlesService;
+
+    @Autowired
+    CommandeService commandeService;
 
     @RequestMapping(value = {"/connexion"}, method = RequestMethod.GET)
     public ModelAndView connexion(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
@@ -91,11 +96,15 @@ public class MembreController {
     }
 
     @RequestMapping(value = {"/account"}, method = RequestMethod.GET)
-    public String account(HttpSession httpSession) {
-        if(httpSession.getAttribute("membre") != null)
-            return "amazon/membre/account";
-        else
-            return "redirect:/connexion";
+    public ModelAndView account(HttpSession httpSession) {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
+            model.put("commandes",commandeService.findAllCommandeByUser(membre.getId()));
+            return new ModelAndView("amazon/membre/account", model);
+        }else
+            return new ModelAndView("redirect:/connexion",model);
     }
 
     @RequestMapping(value = {"/update"}, method = RequestMethod.POST)

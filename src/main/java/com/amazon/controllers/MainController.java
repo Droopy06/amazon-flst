@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 /**
@@ -24,7 +25,7 @@ public class MainController {
     ArticlesService articlesService;
 
     @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-    public ModelAndView home() {
+    public ModelAndView home(HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         model.put("article",new Articles());
         model.put("support",articlesService.getAllArticles());
