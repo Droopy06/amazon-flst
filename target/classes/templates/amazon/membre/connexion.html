@@ -67,6 +67,11 @@
                         <span><i class="fa fa-users"></i> Espace de connexion</span>
                     </div>
                 </div>
+                <div class="alert alert-danger" role="alert" th:if="${erreur}">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <span th:text="${erreur}"></span>
+                </div>
                 <form name="connexion" action="/connect" method="post" th:object="${membre}">
                     <div class="row row-no-padding">
                         <div class="col-md-4 col-md-offset-4">

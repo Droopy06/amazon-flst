@@ -37,7 +37,7 @@ public class PanierController {
         Articles article = articlesService.getArticlesById(idProduit);
         articles.add(article);
         httpSession.setAttribute("panier",articles);
-        return "redirect:/panier";
+        return "redirect:/product/"+idProduit;
     }
 
     @RequestMapping(value = {"/panier"}, method = RequestMethod.GET)
@@ -57,6 +57,20 @@ public class PanierController {
         if(httpSession.getAttribute("panier") != null) {
             if (!httpSession.getAttribute("panier").equals(""))
                 httpSession.setAttribute("panier",null);
+        }
+        return "redirect:/panier";
+    }
+
+    @RequestMapping(value = {"/panier/delete/product/{article}"}, method = RequestMethod.GET)
+    public String deleteProductPanier(@PathVariable(value = "article") int idProduit,
+                                      HttpSession httpSession) {
+        if(httpSession.getAttribute("panier") != null) {
+            if (!httpSession.getAttribute("panier").equals("")) {
+                List<Articles> articles = new ArrayList<>();
+                articles =  (List<Articles>) httpSession.getAttribute("panier");
+                articles.remove(idProduit);
+                httpSession.setAttribute("panier",articles);
+            }
         }
         return "redirect:/panier";
     }

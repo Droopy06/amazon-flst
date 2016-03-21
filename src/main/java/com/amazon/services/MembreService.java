@@ -3,6 +3,7 @@ package com.amazon.services;
 
 import com.amazon.models.Membre;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -15,4 +16,6 @@ public interface MembreService {
     void saveMember(Membre membre);
     void updateInformation(Membre membre);
     String getTokenByUser();
+    String sha256(String base);
+    String getIpAdresse(HttpServletRequest request);
 }

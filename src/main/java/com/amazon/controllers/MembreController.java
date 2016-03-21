@@ -45,6 +45,21 @@ public class MembreController {
         }
     }
 
+    @RequestMapping(value = {"/connexion/erreur"}, method = RequestMethod.GET)
+    public ModelAndView connexionErreur(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        if(this.isConnect(httpSession)){
+            return new ModelAndView("redirect:/account",model);
+        }else{
+            model.put("membre",new Membre());
+            model.put("article",new Articles());
+            model.put("support",articlesService.getAllArticles());
+            model.put("allcategories",categorieService.getAllCategories());
+            model.put("erreur","Erreur lors de la saisie du compte ou il n'est pas activé");
+            return new ModelAndView("amazon/membre/connexion",model);
+        }
+    }
+
     @RequestMapping(value = {"/connect"}, method = RequestMethod.POST)
     public String connect(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
         Membre mMembre = membreService.getMemberByName(membre.getNom(),membre.getPassword());
@@ -52,7 +67,7 @@ public class MembreController {
             httpSession.setAttribute("membre",mMembre);
             return "redirect:/account";
         }else{
-            return "redirect:/connexion";
+            return "redirect:/connexion/erreur";
         }
     }
 
