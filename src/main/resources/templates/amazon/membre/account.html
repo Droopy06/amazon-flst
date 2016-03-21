@@ -80,10 +80,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="item,iterStat : ${commandes}">
+                            <tr></tr>
+                            <tr th:each="item,iterStat : ${commandes}" class="white">
                                 <td th:text="${item.date}"></td>
-                                <td th:text="${item.idArticles}"></td>
-                                <td th:text="${item.prix}"></td>
+                                <td th:text="${item.articles}"></td>
+                                <td th:text="${item.prix}+' €'"></td>
                                 <td th:text="${item.modePaiement}"></td>
                             </tr>
                         </tbody>

@@ -21,5 +21,5 @@ public class Commandes {
     private @Getter @Setter String date;
     private @Getter @Setter double prix;
     private @Getter @Setter String modePaiement;
-    private @Getter @Setter long idArticles;
+    private @Getter @Setter String articles;
 }

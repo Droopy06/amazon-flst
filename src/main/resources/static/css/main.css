@@ -17,6 +17,9 @@ label{
 span{
     font-size: 20px;
 }
+.white{
+    color: white;
+}
 .row-no-padding {
     margin-left: 0;
     margin-right: 0;
