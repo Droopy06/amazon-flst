@@ -49,7 +49,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li th:each="item,iterStat : ${support}">
-                                            <a th:href="'/support/'+${item.format}" th:text="${item.format}">Films</a>
+                                            <a th:href="'/support/'+${item}" th:text="${item}">Films</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -78,13 +78,13 @@
                     </div>
                     <div class="col-sm-4 col-md-3 col-md-offset-1  introduction_aside">
                         <ul id="introduction_aside--infos">
-                            <li th:text="'Nom : '+${article.nom}"></li>
-                            <li th:text="'Catégorie : '+${categorie}"></li>
-                            <li th:text="'Qte : '+${article.qte}"></li>
-                            <li th:text="'Format : '+${article.format}"></li>
+                            <li th:text="${article.nom}"></li>
+                            <li th:text="${categorie}"></li>
+                            <!-- <li th:text="${article.qte}+' en stock''"></li> -->
+                            <li th:text="${article.format}"></li>
                             <li th:if="${article.dispo}"> Disponible</li>
                             <li th:unless="${article.dispo}"> Non disponible</li>
-                            <li th:text="'A partir de : '+${article.prix}+' €'"></li>
+                            <li th:text="${article.prix}+' €'"></li>
                         </ul>
                         <div id="introduction_aside--social">
                             <a class="item_fb" th:href="'https://www.facebook.com/sharer/sharer.php?u=http://localhost:8080/product/'+${article.id}" target="blank">
