@@ -2,6 +2,7 @@ package com.amazon.controllers;
 
 import com.amazon.models.Articles;
 import com.amazon.models.Categorie;
+import com.amazon.models.Membre;
 import com.amazon.services.ArticlesService;
 import com.amazon.services.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,10 @@ public class ProductsController {
             objectCategorie.add(maCategorie.getFamille());
             categories.add(objectCategorie);
         }
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("categories",categories);
@@ -57,6 +62,10 @@ public class ProductsController {
         HashMap<String, Object> model = new HashMap<String, Object>();
         Articles article = articlesService.getArticlesById(idProduit);
         Categorie categorie = categorieService.getCategorieByName(article.getCategorie());
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
+        }
         model.put("article",article);
         model.put("categorie",categorie.getNom());
         model.put("support",articlesService.getAllSupport());
@@ -70,6 +79,10 @@ public class ProductsController {
         HashMap<String, Object> model = new HashMap<String, Object>();
         Categorie categorie = categorieService.getCategorieByName(nom);
         List<Articles> articles = articlesService.getArticlesByCategory(categorie.getId());
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("categorie",categorie.getNom());
@@ -91,6 +104,10 @@ public class ProductsController {
             objectCategorie.add(maCategorie.getFamille());
             categories.add(objectCategorie);
         }
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("year",product.getDate());
@@ -104,6 +121,10 @@ public class ProductsController {
                                             HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         List<Articles> articles = articlesService.getArticlesByFormat(format);
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("format",format);

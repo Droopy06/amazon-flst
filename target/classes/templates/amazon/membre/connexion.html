@@ -25,7 +25,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <a class="navbar-brand" href="/">
-                                    <img alt="Amazon"  src="../../static/images/retour_vers_le_futur.jpg" th:src="@{/images/retour_vers_le_futur.jpg}" class="logo"/>
+                                    <img alt="Misys"  src="../../../static/images/MisysLogo.jpg" th:src="@{/images/MisysLogo.jpg}" class="logo"/>
                                     <span>Misys</span>
                                 </a>
                             </div>
@@ -53,7 +53,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="/connexion">Mon compte</a></li>
+                                <li><a href="/connexion" th:unless="${session.containsKey('membre')}">Se connecter</a></li>
+                                <li><a href="/acoount" th:if="${session.containsKey('membre')}"><i class="fa fa-user"></i> Mon compte</a></li>
+                                <li th:if="${compte}"><a th:text="${compte}+' €'" href="#"></a></li>
+                                <li><a href="/deconnexion" th:if="${session.containsKey('membre')}"><i class="fa fa-sign-out"></i></a></li>
                                 <li><a href="/panier"><i class="fa fa-shopping-bag"></i></a> </li>
                             </ul>
                         </div>

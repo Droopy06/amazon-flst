@@ -25,7 +25,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <a class="navbar-brand" href="/">
-                                    <img alt="Amazon"  src="../../static/images/retour_vers_le_futur.jpg" th:src="@{/images/retour_vers_le_futur.jpg}" class="logo"/>
+                                    <img alt="Misys"  src="../../static/images/MisysLogo.jpg" th:src="@{/images/MisysLogo.jpg}" class="logo"/>
                                     <span>Misys</span>
                                 </a>
                             </div>
@@ -53,7 +53,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="/connexion">Mon compte</a></li>
+                                <li><a href="/connexion" th:unless="${session.containsKey('membre')}">Se connecter</a></li>
+                                <li><a href="/acoount" th:if="${session.containsKey('membre')}"><i class="fa fa-user"></i> Mon compte</a></li>
+                                <li th:if="${compte}"><a th:text="${compte}+' €'" href="#"></a></li>
+                                <li><a href="/deconnexion" th:if="${session.containsKey('membre')}"><i class="fa fa-sign-out"></i></a></li>
                                 <li><a href="/panier"><i class="fa fa-shopping-bag"></i></a> </li>
                             </ul>
                         </div>
@@ -61,15 +64,15 @@
                 </div>
             </header>
             <div class="container">
-                <h1>Incredibly Basic Slider</h1>
+                <h1>Produits à la une</h1>
                 <div id="slider">
                     <a href="#" class="control_next">>></a>
                     <!--<a href="#" class="control_prev"><</a>-->
                     <ul>
-                        <li>SLIDE 1</li>
-                        <li style="background: #aaa;">SLIDE 2</li>
-                        <li>SLIDE 3</li>
-                        <li style="background: #aaa;">SLIDE 4</li>
+                        <li><a href="/product/1"><img src="../../static/images/retour_vers_le_futur.jpg" th:src="@{/images/retour_vers_le_futur.jpg}"/></a></li>
+                        <li style="background: #aaa;"><a href="/product/5"><img src="../../static/images/diner_de_con.jpg" th:src="@{/images/diner_de_con.jpg}"/></a></li>
+                        <li><a href="/product/6"><img src="../../static/images/Missioncleopatre.jpg" th:src="@{/images/Missioncleopatre.jpg}"/></a></li>
+                        <li style="background: #aaa;"><a href="/product/3"><img src="../../static/images/Star_Wars,_épisode_I_-_La_Menace_fantôme_logo.jpg" th:src="@{/images/Star_Wars,_épisode_I_-_La_Menace_fantôme_logo.jpg}"/></a></li>
                     </ul>
                 </div>
 
@@ -104,6 +107,7 @@
                 </div>
                 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+                <script src="../../static/js/slider.js" th:src="@{/js/slider.js}"></script>
             </footer>
         </div>
     </body>

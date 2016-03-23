@@ -1,6 +1,7 @@
 package com.amazon.controllers;
 
 import com.amazon.models.Articles;
+import com.amazon.models.Membre;
 import com.amazon.services.ArticlesService;
 import com.amazon.services.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,10 @@ public class PanierController {
         if(isPanier(httpSession)){
             List<Articles> articles = (List<Articles>) httpSession.getAttribute("panier");
             model.put("articles",articles);
+        }
+        if(httpSession.getAttribute("membre") != null) {
+            Membre membre = (Membre) httpSession.getAttribute("membre");
+            model.put("compte", membre.getCompte());
         }
         model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
