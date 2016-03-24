@@ -109,5 +109,7 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.6" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20141113" level="project" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-2.2.1" level="application" />
   </component>
 </module>

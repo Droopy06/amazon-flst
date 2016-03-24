@@ -32,36 +32,39 @@
                             <span>Misys</span>
                         </a>
                     </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search"/>
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <li><a href="/products">Nos produits</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li th:each="item,iterStat : ${allcategories}">
-                                    <a th:href="${item.url}" th:text="${item.nom}">Films</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li th:each="item,iterStat : ${support}">
-                                    <a th:href="'/support/'+${item}" th:text="${item}">Films</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="/connexion" th:unless="${session.containsKey('membre')}">Se connecter</a></li>
-                        <li><a href="/acoount" th:if="${session.containsKey('membre')}"><i class="fa fa-user"></i> Mon compte</a></li>
-                        <li th:if="${compte}"><a th:text="${compte}+' €'" href="#"></a></li>
-                        <li><a href="/deconnexion" th:if="${session.containsKey('membre')}"><i class="fa fa-sign-out"></i></a></li>
-                        <li><a href="/panier"><i class="fa fa-shopping-bag"></i></a> </li>
-                    </ul>
+
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <form class="navbar-form navbar-left" method="post" action="/product/search/date" role="search" th:object="${article}">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" th:field="*{date}" placeholder="Rechercher par date"/>
+                                </div>
+                                <button type="submit" class="btn btn-default">Rechercher</button>
+                            </form>
+                            <li><a href="/products">Nos produits</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li th:each="item,iterStat : ${allcategories}">
+                                        <a th:href="${item.url}" th:text="${item.nom}">Films</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li th:each="item,iterStat : ${support}">
+                                        <a th:href="'/support/'+${item}" th:text="${item}">Films</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="/connexion" th:unless="${session.containsKey('membre')}">Se connecter</a></li>
+                            <li><a href="/acoount" th:if="${session.containsKey('membre')}"><i class="fa fa-user"></i> Mon compte</a></li>
+                            <li th:if="${compte}"><a th:text="${compte}+' €'" href="#"></a></li>
+                            <li><a href="/deconnexion" th:if="${session.containsKey('membre')}"><i class="fa fa-sign-out"></i></a></li>
+                            <li><a href="/panier"><i class="fa fa-shopping-bag"></i></a> </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </div>
