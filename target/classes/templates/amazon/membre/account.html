@@ -37,7 +37,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <form class="navbar-form navbar-left" method="post" action="/product/search/date" role="search" th:object="${article}">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" th:field="*{date}" placeholder="Rechercher par date"/>
+                                    <input type="number" class="form-control" th:field="*{date}" placeholder="Rechercher par date"/>
                                 </div>
                                 <button type="submit" class="btn btn-default">Rechercher</button>
                             </form>
