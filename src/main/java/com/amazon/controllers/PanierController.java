@@ -52,6 +52,7 @@ public class PanierController {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
         }
+        model.put("article",new Articles());
         model.put("support",articlesService.getAllSupport());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/checkout/panier",model);
