@@ -6,9 +6,12 @@
           href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
           href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css"/>
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <title>Amazon project</title>
+    <title>Misys project</title>
+    <!-- Viewport -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
 <div class="main">
@@ -124,10 +127,10 @@
         </div>
         <div class="row row-no-padding">
             <div class="col-sm-2 col-md-2 col-md-offset-4">
-                <a class="button" th:href="'/panier/delete'"><i class="fa fa-trash"></i> Supprimer</a>
+                <a class="button" th:href="'/panier/delete'"><i class="fa fa-trash"></i> Annuler ma commande</a>
             </div>
             <div class="col-sm-2 col-md-2 col-md-offset-1">
-                <a class="button" th:href="'/panier/confirm'"><i class="fa fa-check"></i> Confirmer</a>
+                <a class="button" th:href="'/panier/confirm'"><i class="fa fa-check"></i> Valider ma commande</a>
             </div>
         </div>
     </div>
