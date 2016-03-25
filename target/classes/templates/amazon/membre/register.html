@@ -70,13 +70,13 @@
 </header>
 <div class="container">
     <div class="row row-no-padding">
-        <div class="col-md-8 col-md-offset-2" th:if="${erreur}">
-            <span>Erreur de saisie</span>
+        <div class="col-md-8 col-md-offset-2">
+            <span><i class="fa fa-users"></i> Inscription</span>
         </div>
     </div>
     <div class="row row-no-padding">
-        <div class="col-md-8 col-md-offset-2">
-            <span><i class="fa fa-users"></i> Inscription</span>
+        <div class="col-md-8 col-md-offset-2 alert alert-danger" role="alert" th:if="${erreur}">
+            <span>Erreur de saisie</span>
         </div>
     </div>
     <form name="connexion" action="/register" method="post" th:object="${membre}">

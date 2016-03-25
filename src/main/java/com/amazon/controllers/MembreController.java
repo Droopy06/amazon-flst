@@ -93,7 +93,7 @@ public class MembreController {
         HashMap<String, Object> model = new HashMap<String, Object>();
         if(bindingResult.hasErrors()){
             model.put("erreur",bindingResult.getAllErrors());
-            model.put("membre",new Membre());
+            model.put("membre",membre);
             model.put("article",new Articles());
             model.put("support",articlesService.getAllArticles());
             model.put("allcategories",categorieService.getAllCategories());
