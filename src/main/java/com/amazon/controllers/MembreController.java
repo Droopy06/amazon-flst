@@ -9,6 +9,7 @@ import com.amazon.services.CommandeService;
 import com.amazon.services.MembreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -87,12 +88,22 @@ public class MembreController {
     }
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
-    public String register(@ModelAttribute @Valid Membre membre) {
+    public ModelAndView register(@ModelAttribute @Valid Membre membre,
+                           BindingResult bindingResult) {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        if(bindingResult.hasErrors()){
+            model.put("erreur",bindingResult.getAllErrors());
+            model.put("membre",new Membre());
+            model.put("article",new Articles());
+            model.put("support",articlesService.getAllArticles());
+            model.put("allcategories",categorieService.getAllCategories());
+            return new ModelAndView("amazon/membre/register",model);
+        }
         membre.setActif(0);
         membre.setPrenium(0);
         membre.setCompte(250.50);
         membreService.saveMember(membre);
-        return "redirect:/connexion";
+        return new ModelAndView("redirect:/connexion",model);
     }
 
     @RequestMapping(value = {"/account"}, method = RequestMethod.GET)

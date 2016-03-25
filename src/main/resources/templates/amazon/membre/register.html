@@ -74,6 +74,11 @@
             <span><i class="fa fa-users"></i> Inscription</span>
         </div>
     </div>
+    <div class="row row-no-padding">
+        <div class="col-md-8 col-md-offset-2 alert alert-danger" role="alert" th:if="${erreur}">
+            <span>Erreur de saisie</span>
+        </div>
+    </div>
     <form name="connexion" action="/register" method="post" th:object="${membre}">
         <div class="col-md-4 col-md-offset-2">
             <div class="row row-no-padding">
@@ -96,7 +101,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group">
                         <label for="adresse">Adresse email</label>
-                        <input type="text" th:field="*{adresse}" th:errorclass="error" placeholder="Entrez votre adresse mail"/>
+                        <input type="text" th:field="*{email}" th:errorclass="error" placeholder="Entrez votre adresse mail"/>
                     </div>
                 </div>
             </div>

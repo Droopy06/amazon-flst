@@ -70,6 +70,11 @@
 </header>
 <div class="container">
     <div class="row row-no-padding">
+        <div class="col-md-8 col-md-offset-2" th:if="${erreur}">
+            <span>Erreur de saisie</span>
+        </div>
+    </div>
+    <div class="row row-no-padding">
         <div class="col-md-8 col-md-offset-2">
             <span><i class="fa fa-users"></i> Inscription</span>
         </div>
@@ -96,7 +101,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="form-group">
                         <label for="adresse">Adresse email</label>
-                        <input type="text" th:field="*{adresse}" th:errorclass="error" placeholder="Entrez votre adresse mail"/>
+                        <input type="text" th:field="*{email}" th:errorclass="error" placeholder="Entrez votre adresse mail"/>
                     </div>
                 </div>
             </div>
