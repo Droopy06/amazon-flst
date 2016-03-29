@@ -130,7 +130,14 @@
         </div>
         <div class="row row-no-padding">
             <div class="col-sm-2 col-md-2 col-md-offset-4">
-                <a class="button" th:href="'/panier/delete'"><i class="fa fa-trash"></i> Annuler ma commande</a>
+                <a class="button" onclick="deletePanier()"><i class="fa fa-trash"></i> Annuler ma commande</a>
+                <script type="text/javascript">
+                    function deletePanier(){
+                        if(confirm('Etes vous sur d\'annuler votre commande')){
+                            window.location.href = "/panier/delete";
+                        }
+                    }
+                </script>
             </div>
             <div class="col-sm-2 col-md-2 col-md-offset-1">
                 <a class="button" th:href="'/panier/confirm'"><i class="fa fa-check"></i> Valider ma commande</a>
