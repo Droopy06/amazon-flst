@@ -38,10 +38,10 @@ public class MembreController {
     CommandeService commandeService;
 
     @RequestMapping(value = {"/connexion"}, method = RequestMethod.GET)
-    public ModelAndView connexion(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
+    public ModelAndView connexion(HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         if(this.isConnect(httpSession)){
-            return new ModelAndView("redirect:/account",model);
+            return new ModelAndView("redirect:/home",model);
         }else{
             model.put("membre",new Membre());
             model.put("article",new Articles());
@@ -52,7 +52,7 @@ public class MembreController {
     }
 
     @RequestMapping(value = {"/connexion/erreur"}, method = RequestMethod.GET)
-    public ModelAndView connexionErreur(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
+    public ModelAndView connexionErreur(HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
         if(this.isConnect(httpSession)){
             return new ModelAndView("redirect:/account",model);
@@ -68,10 +68,11 @@ public class MembreController {
 
     @RequestMapping(value = {"/connect"}, method = RequestMethod.POST)
     public String connect(@ModelAttribute @Valid Membre membre,HttpSession httpSession) {
-        Membre mMembre = membreService.getMemberByName(membre.getNom(),membre.getPassword());
+        //Membre mMembre = membreService.getMemberByName(membre.getNom(),membre.getPassword());
+        Membre mMembre = membreService.getMemberByEmail(membre.getEmail(),membre.getPassword());
         if(mMembre.getNom() != null){
             httpSession.setAttribute("membre",mMembre);
-            return "redirect:/account";
+            return "redirect:/home";
         }else{
             return "redirect:/connexion/erreur";
         }

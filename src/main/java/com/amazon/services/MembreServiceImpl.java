@@ -36,6 +36,12 @@ public class MembreServiceImpl implements MembreService {
     }
 
     @Override
+    public Membre getMemberByEmail(String email, String password) {
+        password = sha256(password);
+        return membreMapper.getMemberByEmail(email,password);
+    }
+
+    @Override
     public void saveMember(Membre membre) {
         membre.setToken(this.getTokenByUser());
         membre.setPassword(sha256(membre.getPassword()));

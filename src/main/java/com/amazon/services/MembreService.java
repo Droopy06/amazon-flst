@@ -13,6 +13,7 @@ public interface MembreService {
     List<Membre> listAllMembres();
     Membre getMemberById(long id);
     Membre getMemberByName(String name,String password);
+    Membre getMemberByEmail(String email,String password);
     void saveMember(Membre membre);
     void updateInformation(Membre membre);
     String getTokenByUser();
