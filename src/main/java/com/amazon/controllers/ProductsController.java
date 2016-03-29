@@ -48,6 +48,10 @@ public class ProductsController {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
         }
+        if(isPanier(httpSession)){
+            List<Articles> articles2 = (List<Articles>) httpSession.getAttribute("panier");
+            model.put("nbArticles",articles2.size());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("categories",categories);
@@ -66,6 +70,10 @@ public class ProductsController {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
         }
+        if(isPanier(httpSession)){
+            List<Articles> articles2 = (List<Articles>) httpSession.getAttribute("panier");
+            model.put("nbArticles",articles2.size());
+        }
         model.put("article",article);
         model.put("categorie",categorie.getNom());
         model.put("support",articlesService.getAllSupport());
@@ -82,6 +90,10 @@ public class ProductsController {
         if(httpSession.getAttribute("membre") != null) {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
+        }
+        if(isPanier(httpSession)){
+            List<Articles> articles2 = (List<Articles>) httpSession.getAttribute("panier");
+            model.put("nbArticles",articles2.size());
         }
         model.put("articles",articles);
         model.put("article",new Articles());
@@ -108,6 +120,10 @@ public class ProductsController {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
         }
+        if(isPanier(httpSession)){
+            List<Articles> articles2 = (List<Articles>) httpSession.getAttribute("panier");
+            model.put("nbArticles",articles2.size());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("year",product.getDate());
@@ -125,6 +141,10 @@ public class ProductsController {
             Membre membre = (Membre) httpSession.getAttribute("membre");
             model.put("compte", membre.getCompte());
         }
+        if(isPanier(httpSession)){
+            List<Articles> articles2 = (List<Articles>) httpSession.getAttribute("panier");
+            model.put("nbArticles",articles2.size());
+        }
         model.put("articles",articles);
         model.put("article",new Articles());
         model.put("format",format);
@@ -132,5 +152,17 @@ public class ProductsController {
         model.put("categorie",categorieService.getCategorieByName(articles.get(0).getCategorie()).getNom());
         model.put("allcategories",categorieService.getAllCategories());
         return new ModelAndView("amazon/products/productsearchformat",model);
+    }
+
+    private boolean isPanier(HttpSession session){
+        boolean isConnect = false;
+        if(session.getAttribute("panier") != null){
+            if(!session.getAttribute("panier").equals(""))
+                isConnect = true;
+            else
+                isConnect = false;
+        }else
+            isConnect = false;
+        return isConnect;
     }
 }

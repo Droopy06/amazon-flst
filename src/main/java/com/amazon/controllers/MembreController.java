@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by prog on 16/02/2016.
@@ -43,6 +44,10 @@ public class MembreController {
         if(this.isConnect(httpSession)){
             return new ModelAndView("redirect:/home",model);
         }else{
+            if(isPanier(httpSession)){
+                List<Articles> articles = (List<Articles>) httpSession.getAttribute("panier");
+                model.put("nbArticles",articles.size());
+            }
             model.put("membre",new Membre());
             model.put("article",new Articles());
             model.put("support",articlesService.getAllSupport());
@@ -57,6 +62,10 @@ public class MembreController {
         if(this.isConnect(httpSession)){
             return new ModelAndView("redirect:/account",model);
         }else{
+            if(isPanier(httpSession)){
+                List<Articles> articles = (List<Articles>) httpSession.getAttribute("panier");
+                model.put("nbArticles",articles.size());
+            }
             model.put("membre",new Membre());
             model.put("article",new Articles());
             model.put("support",articlesService.getAllSupport());
@@ -79,8 +88,12 @@ public class MembreController {
     }
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
-    public ModelAndView registerUser() {
+    public ModelAndView registerUser(HttpSession httpSession) {
         HashMap<String, Object> model = new HashMap<String, Object>();
+        if(isPanier(httpSession)){
+            List<Articles> articles = (List<Articles>) httpSession.getAttribute("panier");
+            model.put("nbArticles",articles.size());
+        }
         model.put("membre",new Membre());
         model.put("article",new Articles());
         model.put("support",articlesService.getAllArticles());
@@ -142,6 +155,18 @@ public class MembreController {
         boolean isConnect = false;
         if(session.getAttribute("membre") != null){
             if(!session.getAttribute("membre").equals(""))
+                isConnect = true;
+            else
+                isConnect = false;
+        }else
+            isConnect = false;
+        return isConnect;
+    }
+
+    private boolean isPanier(HttpSession session){
+        boolean isConnect = false;
+        if(session.getAttribute("panier") != null){
+            if(!session.getAttribute("panier").equals(""))
                 isConnect = true;
             else
                 isConnect = false;

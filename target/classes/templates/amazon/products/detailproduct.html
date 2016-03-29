@@ -61,7 +61,7 @@
                                     <li><a href="/account" th:if="${session.containsKey('membre')}"><i class="fa fa-user"></i> Mon compte</a></li>
                                     <li th:if="${compte}"><a th:text="${compte}+' €'" href="#"></a></li>
                                     <li><a href="/deconnexion" th:if="${session.containsKey('membre')}"><i class="fa fa-sign-out"></i></a></li>
-                                    <li><a href="/panier"><i class="fa fa-shopping-bag"></i></a> </li>
+                                    <li><a href="/panier"><span th:if="${nbArticles}" th:text="${nbArticles}"></span> <i class="fa fa-shopping-bag"></i></a> </li>
                                 </ul>
                             </div>
                         </div>

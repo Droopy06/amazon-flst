@@ -47,6 +47,7 @@ public class PanierController {
         if(isPanier(httpSession)){
             List<Articles> articles = (List<Articles>) httpSession.getAttribute("panier");
             model.put("articles",articles);
+            model.put("nbArticles",articles.size());
         }
         if(httpSession.getAttribute("membre") != null) {
             Membre membre = (Membre) httpSession.getAttribute("membre");
